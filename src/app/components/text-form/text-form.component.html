@@ -1,0 +1,23 @@
+<form
+  nz-form
+  [nzLayout]="'inline'"
+  [formGroup]="inputForm"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item class="input-text">
+    <nz-form-control nzErrorTip="Please input your tweet!">
+      <textarea
+        nz-input
+        formControlName="tweet"
+        placeholder="Enter your tweet here"
+        [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+      ></textarea>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item class="submit-btn">
+    <button nz-button [nzType]="buttonType" [disabled]="!inputForm.valid">
+      Submit
+    </button>
+  </nz-form-item>
+</form>

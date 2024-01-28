@@ -1,0 +1,42 @@
+<nz-layout>
+  <nz-sider nzCollapsible nzWidth="200px">
+    <div class="logo"></div>
+    <ul nz-menu nzMode="inline">
+      <li nz-menu-item>
+        <span nz-icon nzType="save" nzTheme="outline"></span>
+        <span>Saved</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="environment" nzTheme="outline"></span>
+        <span>Location Sharing</span>
+      </li>
+      <!-- <li nz-submenu nzTitle="User" nzIcon="user">
+        <ul>
+          <li nz-menu-item>Tom</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul>
+      </li>
+
+      <li nz-submenu nzTitle="Team" nzIcon="team">
+        <ul>
+          <li nz-menu-item>Team 1</li>
+          <li nz-menu-item>Team 2</li>
+        </ul>
+      </li> -->
+      <li nz-menu-item>
+        <span nz-icon nzType="edit" nzTheme="outline"></span>
+        <span>Your Contributions</span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header class="header"> <h1>Business Trip App</h1></nz-header>
+    <nz-content>
+      <app-map></app-map>
+    </nz-content>
+    <nz-footer>
+      <app-text-form></app-text-form>
+    </nz-footer>
+  </nz-layout>
+</nz-layout>
