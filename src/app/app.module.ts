@@ -10,6 +10,7 @@ import { MapComponent } from './map/map.component';
 import { TextFormComponent } from './components/text-form/text-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MapService } from './services/map.service';
+import { TwitterConnectComponent } from './components/twitter-connect/twitter-connect.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MapService } from './services/map.service';
     LayoutComponent,
     MapComponent,
     TextFormComponent,
+    TwitterConnectComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,4 +30,4 @@ import { MapService } from './services/map.service';
   providers: [MapService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
