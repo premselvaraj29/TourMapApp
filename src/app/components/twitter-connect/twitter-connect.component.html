@@ -1,0 +1,11 @@
+<div class="connect-twitter">
+    <ng-template [ngIf]="username" [ngIfElse]="connectTwitter">
+        Hello! {{username}}
+    </ng-template>
+    <ng-template #connectTwitter>
+        <a class="action" href={{getTwitterOauthUrl()}}>
+            <img src="assets/twitter-logo.svg" alt="twitter icon" />
+            <p>Twitter</p>
+        </a>
+    </ng-template>
+</div>
