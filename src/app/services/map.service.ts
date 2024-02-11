@@ -70,7 +70,7 @@ export class MapService {
       //@ts-ignore
       photoReference = placeResult.photos[0].photo_reference;
     }
-    const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photo_reference=${photoReference}&key=YOUR_API_KEY`;
+    const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photo_reference=${photoReference}&key=AIzaSyBKo7tPSGA3GP7dEc-it1SnhlT72WYN_-Q`;
     let content = `<div> <h2>${placeResult.name}</h2>`;
 
     if (photoReference !== null) {

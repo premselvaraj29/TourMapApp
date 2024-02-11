@@ -11,6 +11,7 @@ import { TextFormComponent } from './components/text-form/text-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MapService } from './services/map.service';
 import { TwitterConnectComponent } from './components/twitter-connect/twitter-connect.component';
+import { TwitterService } from './services/twitter.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { TwitterConnectComponent } from './components/twitter-connect/twitter-co
     BrowserAnimationsModule,
     ReactiveFormsModule,
   ],
-  providers: [MapService],
+  providers: [MapService, TwitterService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
