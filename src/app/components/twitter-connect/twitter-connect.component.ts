@@ -41,4 +41,12 @@ export class TwitterConnectComponent implements OnInit {
   ngOnInit(): void {
     this.getUsername();
   }
+
+  signOut(): void {
+    // Remove the username from the component state
+    this.username = undefined;
+
+    // Remove the cookie
+    this.cookieService.delete('user_name');
+  }
 }

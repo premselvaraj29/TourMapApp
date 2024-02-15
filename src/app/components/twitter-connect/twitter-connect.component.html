@@ -1,12 +1,15 @@
 <div class="connect-twitter">
-    <ng-template [ngIf]="username" [ngIfElse]="connectTwitter">
-        Hello! {{username}}
-    </ng-template>
-    <ng-template #connectTwitter>
-        <!-- <a class="action" href={{getTwitterOauthUrl()}}> -->
-        <a class="action" href="http://www.localhost:3000/twitter/login">
-            <img src="assets/twitter-logo.svg" alt="twitter icon" />
-            <p>Twitter</p>
-        </a>
-    </ng-template>
+  <ng-template [ngIf]="username" [ngIfElse]="connectTwitter">
+    Hello! {{ username }}
+  </ng-template>
+  <ng-template #connectTwitter>
+    <!-- <a class="action" href={{getTwitterOauthUrl()}}> -->
+    <a class="action" href="http://www.localhost:3000/twitter/login">
+      <img src="assets/twitter-logo.svg" alt="twitter icon" />
+      <p>Twitter</p>
+    </a>
+  </ng-template>
+  <button class="btn" nz-button nzType="primary" (click)="signOut()">
+    Sign Out
+  </button>
 </div>

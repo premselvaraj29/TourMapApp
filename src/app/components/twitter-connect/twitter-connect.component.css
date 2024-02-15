@@ -1,21 +1,25 @@
 .connect-twitter {
-    padding: 16px 24px;
-    color: #f1f1f1;
+  padding: 16px 24px;
+  color: #f1f1f1;
 }
 
 .connect-twitter img {
-    height: 24px;
-    width: 24px;
-    margin-right: 10px;
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
 }
 
 .connect-twitter .action {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .connect-twitter p {
-    margin: 0px;
+  margin: 0px;
+}
+
+.btn {
+  margin-top: 10px;
 }
