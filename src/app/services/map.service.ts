@@ -36,7 +36,7 @@ export class MapService {
     this.placeService = new google.maps.places.PlacesService(map);
   }
 
-  addPlaces(places, map) {
+  addPlaces(places, map = this.map) {
     for (const place of places) {
       console.log(place);
 
@@ -59,6 +59,16 @@ export class MapService {
         this.attachInfoWindow(marker, place);
       }
     }
+  }
+
+  getPhotoUrl(place: google.maps.places.PlaceResult) {
+    let photoReference = null;
+    if (place.photos !== undefined && place.photos.length !== 0) {
+      //@ts-ignore
+      photoReference = place.photos[0].photo_reference;
+    }
+    const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photo_reference=${photoReference}&key=AIzaSyCYYEd7y5K5e0kSPk-J39b2jO31qL7es1s`;
+    return photoUrl;
   }
 
   attachInfoWindow(
@@ -88,4 +98,55 @@ export class MapService {
       infowindow.open(marker.get('map'), marker);
     });
   }
+
+  addRoute(wayPointsWithoutStopOver: google.maps.places.PlaceResult[]) {
+    const directionsService = new google.maps.DirectionsService();
+    const directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(this.map);
+    const waypts = wayPointsWithoutStopOver.map((wayPoint, index) => {
+      if (index !== 0 && index !== wayPointsWithoutStopOver.length - 1) {
+        return {
+          location: wayPoint.geometry.location,
+          stopover: true,
+        };
+      } else {
+        return { location: wayPoint.geometry.location, stopover: true };
+      }
+    });
+    // const waypts = [
+    //   {
+    //     location: { lat: 35.2271, lng: -80.8431 }, // Example waypoint (Charlotte)
+    //     stopover: true,
+    //   },
+    //   {
+    //     location: { lat: 34.0522, lng: -118.2437 }, // Another example waypoint (Los Angeles)
+    //     stopover: true,
+    //   },
+    // ];
+
+    const request = {
+      origin: waypts[0].location,
+      destination: waypts[waypts.length - 1].location,
+      waypoints: waypts,
+      optimizeWaypoints: false,
+      travelMode: google.maps.TravelMode.DRIVING,
+    };
+
+    directionsService.route(request, (result, status) => {
+      if (status === google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(result);
+
+        // Add custom markers for each waypoint
+        result.routes[0].legs.forEach((leg, index) => {
+          const marker = new google.maps.Marker({
+            position: leg.start_location,
+            map: this.map,
+            title: leg.start_address,
+          });
+        });
+      }
+    });
+  }
 }
+// label: `${index + 1}`,
+//waypts.slice(1, -1),

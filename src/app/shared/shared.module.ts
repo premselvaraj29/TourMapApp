@@ -8,7 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzRateModule } from 'ng-zorro-antd/rate';
+import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 @NgModule({
   declarations: [],
   imports: [
@@ -21,6 +25,11 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzFormModule,
     NzInputModule,
     NzButtonModule,
+    NzPageHeaderModule,
+    NzCardModule,
+    NzRateModule,
+    NzTabsModule,
+    NzTimelineModule,
   ],
   exports: [
     NzLayoutModule,
@@ -31,6 +40,11 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzFormModule,
     NzInputModule,
     NzButtonModule,
+    NzPageHeaderModule,
+    NzCardModule,
+    NzRateModule,
+    NzTabsModule,
+    NzTimelineModule,
   ],
 })
 export class SharedModule {}

@@ -1,0 +1,51 @@
+<form
+  nz-form
+  [formGroup]="timeRequirementForm"
+  class="login-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="totalTime"
+      >Total Time in mins</nz-form-label
+    >
+    <nz-form-control nzErrorTip="Please input your total time in mins!">
+      <nz-input-group nzPrefixIcon="field-time">
+        <input
+          type="number"
+          nz-input
+          formControlName="totalTime"
+          placeholder="Total Time"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="timePerLocation"
+      >Total Time per Location</nz-form-label
+    >
+    <nz-form-control nzErrorTip="Please input your time per location!">
+      <nz-input-group nzPrefixIcon="field-time">
+        <input
+          type="number"
+          nz-input
+          formControlName="timePerLocation"
+          placeholder="Time per Location"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item nz-row>
+    <nz-form-control>
+      <button nz-button nzType="primary" (click)="submitForm()">
+        Schedule Itineary
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+<nz-timeline class="timeline">
+  <nz-timeline-item nzColor="red" *ngFor="let item of optimizedRoutePlaces">{{
+    item.name
+  }}</nz-timeline-item>
+</nz-timeline>

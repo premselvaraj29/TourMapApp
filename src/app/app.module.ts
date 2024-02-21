@@ -8,10 +8,14 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapComponent } from './map/map.component';
 import { TextFormComponent } from './components/text-form/text-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapService } from './services/map.service';
 import { TwitterConnectComponent } from './components/twitter-connect/twitter-connect.component';
 import { TwitterService } from './services/twitter.service';
+import { PlacesContainerComponent } from './components/places-container/places-container.component';
+import { PlacesService } from './services/places.service';
+import { RecommendationsService } from './services/recommendations.service';
+import { ItinaryScheduleComponent } from './components/itinary-schedule/itinary-schedule.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,8 @@ import { TwitterService } from './services/twitter.service';
     MapComponent,
     TextFormComponent,
     TwitterConnectComponent,
+    PlacesContainerComponent,
+    ItinaryScheduleComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,8 +33,15 @@ import { TwitterService } from './services/twitter.service';
     SharedModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [MapService, TwitterService],
+  providers: [
+    MapService,
+    TwitterService,
+    RecommendationsService,
+    PlacesService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
