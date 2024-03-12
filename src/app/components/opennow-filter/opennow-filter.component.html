@@ -1,0 +1,15 @@
+<div class="filter-wrapper">
+  <button nz-button nz-dropdown [nzDropdownMenu]="opennowMenu" [ngClass]="['filter', selectedValue === true ? 'selected' : '']">
+    <span class="filtered google-symbols onfiltered"></span>
+    {{currentDisplayText}}
+    <span class="down google-symbols"></span>
+  </button>
+  <nz-dropdown-menu #opennowMenu="nzDropdownMenu">
+    <ul nz-menu>
+      <ng-template ngFor let-option [ngForOf]="availableOptions" let-i=index>
+        <li nz-menu-item clickable (click)="setValue(option)">{{ option[0] }}</li>
+      </ng-template>
+      
+    </ul>
+  </nz-dropdown-menu>
+</div>
