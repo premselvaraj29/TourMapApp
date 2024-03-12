@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { io, Socket } from 'socket.io-client';
+import { PlaceFilter } from '../shared/type';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +14,10 @@ export class RecommendationsService {
     this.socket = io(this.serverUrl);
   }
 
-  requestRecommendations() {
+  requestRecommendations(options: Partial<PlaceFilter>) {
     if (this.cookieService.check('user_id')) {
       const userId = this.cookieService.get('user_id');
-      this.socket.emit('requestRecommendations', { userId });
+      this.socket.emit('requestRecommendations', { userId, options });
     }
   }
 

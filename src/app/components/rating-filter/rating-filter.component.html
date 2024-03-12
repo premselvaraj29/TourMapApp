@@ -1,0 +1,24 @@
+<div class="filter-wrapper">
+  <button nz-button nz-dropdown [nzDropdownMenu]="ratingMenu" [ngClass]="['filter', selectedValue !== false ? 'selected' : '']">
+    <span class="filtered google-symbols onfiltered"></span>
+    {{currentDisplayText}}
+    <img class="star onfiltered" alt="" draggable="false" src="//www.gstatic.com/images/icons/material/system/1x/star_gm_yellow500_24dp.png">
+    <span class="down google-symbols"></span>
+  </button>
+  <nz-dropdown-menu #ratingMenu="nzDropdownMenu">
+    <ul nz-menu>
+      <ng-template ngFor let-option [ngForOf]="availableOptions" let-i=index>
+        <li nz-menu-item clickable (click)="setValue(option)" class="rating-wrapper">
+          <span class="rating-label">{{ option[0] }}</span>
+          <ng-template [ngIf]="option[1] === false" [ngIfElse]="rating">
+
+          </ng-template>
+          <ng-template #rating>
+            <nz-rate style="height: fit-content" [ngModel]="option[1]" nzDisabled></nz-rate>
+          </ng-template> 
+        </li>
+      </ng-template>
+      
+    </ul>
+  </nz-dropdown-menu>
+</div>

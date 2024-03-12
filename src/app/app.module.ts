@@ -16,6 +16,9 @@ import { PlacesContainerComponent } from './components/places-container/places-c
 import { PlacesService } from './services/places.service';
 import { RecommendationsService } from './services/recommendations.service';
 import { ItinaryScheduleComponent } from './components/itinary-schedule/itinary-schedule.component';
+import { PriceFilterComponent } from './components/price-filter/price-filter.component';
+import { OpennowFilterComponent } from './components/opennow-filter/opennow-filter.component';
+import { RatingFilterComponent } from './components/rating-filter/rating-filter.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { ItinaryScheduleComponent } from './components/itinary-schedule/itinary-
     TwitterConnectComponent,
     PlacesContainerComponent,
     ItinaryScheduleComponent,
+    PriceFilterComponent,
+    OpennowFilterComponent,
+    RatingFilterComponent,
   ],
   imports: [
     BrowserModule,

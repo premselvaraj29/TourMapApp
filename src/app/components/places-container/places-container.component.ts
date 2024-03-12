@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { find, flatten } from 'lodash';
+import { find, flatten, isEqual } from 'lodash';
 import { CookieService } from 'ngx-cookie-service';
 import { MapService } from 'src/app/services/map.service';
 import { PlacesService } from 'src/app/services/places.service';
 import { RecommendationsService } from 'src/app/services/recommendations.service';
+import { PlaceFilter } from 'src/app/shared/type';
 
 @Component({
   selector: 'app-places-container',
@@ -14,12 +15,17 @@ export class PlacesContainerComponent implements OnInit, OnDestroy {
   recommendations: any[] = [];
   favorites: any[] = [];
   iconColor = {};
+  options: Partial<PlaceFilter>;
   constructor(
     private recommendationsService: RecommendationsService,
     private cookieService: CookieService,
     private mapService: MapService,
     private placesService: PlacesService
-  ) {}
+  ) {
+    this.options = {
+      isOpenNow: false
+    }
+  }
 
   ngOnInit() {
     this.recommendationsService.onRecommendationsUpdate((data) => {
@@ -35,7 +41,18 @@ export class PlacesContainerComponent implements OnInit, OnDestroy {
     });
 
     if (this.cookieService.check('user_id')) {
-      this.recommendationsService.requestRecommendations();
+      this.recommendationsService.requestRecommendations(this.options);
+    }
+  }
+
+  filterChanged(changedData: any) {
+    const currentOptions = {...this.options, ...changedData};
+    if(isEqual(currentOptions, this.options) === true) {
+      return;
+    }
+    this.options = currentOptions;
+    if (this.cookieService.check('user_id')) {
+      this.recommendationsService.requestRecommendations(this.options);
     }
   }
 

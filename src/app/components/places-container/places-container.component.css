@@ -8,10 +8,15 @@
   align-items: center;
 }
 
-/* .restauraunts {
+.places-wrapper {
   display: flex;
-  flex-direction: row;
-} */
+  flex-direction: column;
+}
+
+.places-filter {
+  display: flex;
+  margin: 10px;
+}
 
 .card {
   margin: 5px;

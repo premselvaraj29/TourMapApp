@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'Google Symbols';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url(//fonts.gstatic.com/l/font?kit=HhyAU5Ak9u-oMExPeInvcuEmPosC9zSpYaEEU68cdvrHJvc8q9PLEJIz8dTgzBT9BLQV9eAKtpW99CIiY4Uzx5dFzRNFinsyGN7Ad_KqOtUz4qwMP-ep9_kaFDxaxOtdMFDQ3KE6E-W21HY9z_c-q5EHCGcKDdMblcel9HfIQEnXlJ05xiZBQVK1mJrS-pzdSaYNIX6vwojn1TRSC9VFW_MZaXgbzAfwnMiL2WDIyTkmUQo9f9GBByJjl1WVVov8BQuLj-ko8X8T1M5d17Iw8qmTsBDlYjp81YvenMWVd4qu1mrOhdSE2WEFYML6u4m_4y6QxIfYrXxz8Y_t3KWGDm8ETtSi0AipjoNqSVTGJb6LFz9dDceggQ5l9uBuYcwJzwZVcxtUIGlzNQd6McUS6E0YDuktqhAb3ET3j4Qo4yRTvbYS20dBBg9aV5tI0RSC5pt01ecVvC5Fu0jspVuDT7mNqSKMELpN7pn-t1KzV2I6HExyYhRzvsef9uTDOyHfNfYoop6-JViwLTH0FId2AMAff5DrNEAyssclNesPAk8Jdj_KDTYNdrNXsNKI0YEJz7dgrtqU6xtURqg0WxHOtbPgAK_U42K8faEOiq3MJmWPzyHixnwwPwWCPO-ZaQk7Y_XcIGe4ing2EFoc7iZ7GoSsMO-RqKo4uH-7Mqnl98O5p8bhlt061M5mMeCvXG2ygzbRd7nvgv92704HrwSpcHhIJrNJrK4SF-NXnMEX8H-uUdSLWJdJSrtuSqYTt7g4FQxAVGg4GaxWXe6Rt5pCg1A90QQaEOS52-FdM_u38kUIFIq5VNVAdB0rcBCGQVXLFFj99rxmVifNIqnIxA57aqIc48n-m_pOJA5w0fAYQYcqJlVmaxafmXS4h1Jc4jeaCD2rhNfJExOBKi3HlY69Y-EMiIeQpfiR0YC0tS8CH2JhkCRH_adyGeT9KpScq1AxQF5YxQ&skey=f8ec4d50247dc1c1&v=v247) format('woff2');
+}
+
+.google-symbols {
+  font-family: 'Google Symbols';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -moz-font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.filter-wrapper {
+  text-align: left;
+  margin-right: 6px;;
+}
+.filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 12px;
+  padding-right: 4px;
+  margin: 6px 0;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.filtered {
+  box-sizing: content-box;
+  display: block;
+  float: none;
+  line-height: 22px;
+  position: static;
+  z-index: auto;
+  font-size: 22px;
+  color: #1a73e8;
+  margin-right: 2px;
+  margin-left: -6px;
+  display: none;
+}
+.down {
+  font-size: 24px;
+}
+
+.filter.selected {
+  box-shadow: none;
+  background-color: #e8f0fe;
+  border: 1px solid #1967d2;
+  color: #1967d2;
+}
+
+.filter.selected .onfiltered {
+  display: block;
+}

@@ -13,6 +13,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 @NgModule({
   declarations: [],
   imports: [
@@ -30,6 +31,7 @@ import { NzTimelineModule } from 'ng-zorro-antd/timeline';
     NzRateModule,
     NzTabsModule,
     NzTimelineModule,
+    NzDropDownModule,
   ],
   exports: [
     NzLayoutModule,
@@ -45,6 +47,7 @@ import { NzTimelineModule } from 'ng-zorro-antd/timeline';
     NzRateModule,
     NzTabsModule,
     NzTimelineModule,
+    NzDropDownModule,
   ],
 })
 export class SharedModule {}
