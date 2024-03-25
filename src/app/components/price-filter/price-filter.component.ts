@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { PlaceFilterEvent } from 'src/app/shared/type';
 
 @Component({
   selector: 'app-price-filter',
@@ -17,7 +18,7 @@ export class PriceFilterComponent {
   defaultDisplayText: string = 'Price'
   currentDisplayText: string;
 
-  @Output() valueChanged = new EventEmitter<{ priceRange: { min: number } }>();
+  @Output() valueChanged = new EventEmitter<PlaceFilterEvent<'priceRange'>>();
 
   constructor() {
     this.selectedValue = 0;
@@ -32,6 +33,6 @@ export class PriceFilterComponent {
       this.currentDisplayText = this.defaultDisplayText;
     }
     this.selectedValue = currentValue;
-    this.valueChanged.emit({ priceRange: { min: currentValue } });
+    this.valueChanged.emit({ priceRange: { min: currentValue }, isClientSide: false, type:'priceRange' });
   }
 }

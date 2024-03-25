@@ -6,11 +6,19 @@
   gap: 10px;
   justify-content: center;
   align-items: center;
+  padding-bottom: 30px;
 }
 
 .places-wrapper {
+  height: calc(100vh - 200px);
   display: flex;
   flex-direction: column;
+}
+
+.places-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .places-filter {
@@ -20,4 +28,40 @@
 
 .card {
   margin: 5px;
+}
+
+.place-details .place-title {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 2px;
+  text-align: left;
+  font-family: 'Google Sans';
+}
+
+.place-details .place-rate-price,
+.place-details .place-address-hour {
+  color: #70757a;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.place-details .place-rate-price span:not(:last-child),
+.place-details .place-address-hour span:not(:last-child) {
+  margin-right: 4px;
+}
+
+.place-details .place-address-hour .place-open,
+.place-details .place-address-hour .place-closed {
+  font-weight: 400;
+}
+
+.place-details .place-address-hour .place-open {
+  font-weight: 400;
+  color: rgba(24,128,56,1.00);
+}
+
+.place-details .place-address-hour .place-closed {
+  font-weight: 400;
+  color:rgba(217,48,37,1.00);
 }
