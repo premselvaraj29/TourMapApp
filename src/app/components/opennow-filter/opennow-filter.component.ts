@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { PlaceFilterEvent } from 'src/app/shared/type';
 
 @Component({
   selector: 'app-opennow-filter',
@@ -15,7 +16,7 @@ export class OpennowFilterComponent {
   defaultDisplayText: string = 'Hours'
   currentDisplayText: string;
 
-  @Output() valueChanged = new EventEmitter<{ isOpenNow: boolean }>();
+  @Output() valueChanged = new EventEmitter<PlaceFilterEvent<'hours'>>();
 
   constructor() {
     this.selectedValue = undefined;
@@ -30,6 +31,6 @@ export class OpennowFilterComponent {
       this.currentDisplayText = this.defaultDisplayText;
     }
     this.selectedValue = currentValue;
-    this.valueChanged.emit({ isOpenNow: currentValue });
+    this.valueChanged.emit({ isClientSide: false, isOpenNow: currentValue, type: 'hours' });
   }
 }

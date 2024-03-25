@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { PlaceFilterEvent } from 'src/app/shared/type';
 
 @Component({
   selector: 'app-rating-filter',
@@ -19,7 +20,7 @@ export class RatingFilterComponent {
   defaultDisplayText: string = 'Rating'
   currentDisplayText: string;
 
-  @Output() valueChanged = new EventEmitter<{ ratings: boolean }>();
+  @Output() valueChanged = new EventEmitter<PlaceFilterEvent<'ratings'>>();
 
   constructor() {
     this.selectedValue = false;
@@ -34,6 +35,6 @@ export class RatingFilterComponent {
       this.currentDisplayText = this.defaultDisplayText;
     }
     this.selectedValue = currentValue;
-    this.valueChanged.emit({ ratings: currentValue });
+    this.valueChanged.emit({ ratings: currentValue, isClientSide: true, type:'ratings' });
   }
 }

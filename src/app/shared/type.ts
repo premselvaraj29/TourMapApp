@@ -9,3 +9,11 @@ export type PlaceFilter = {
   location: [number, number],
   ratings: number,
 }
+
+type PlaceFilterEventsMap = {
+  hours: { isOpenNow: boolean };
+  ratings: { ratings: string };
+  priceRange: { priceRange: { min: number } };
+};
+
+export type PlaceFilterEvent<Type extends keyof PlaceFilterEventsMap> = PlaceFilterEventsMap[Type] & { isClientSide: boolean, type: Type }
