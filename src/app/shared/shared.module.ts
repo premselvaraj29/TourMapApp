@@ -14,6 +14,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 @NgModule({
   declarations: [],
   imports: [
@@ -32,6 +33,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     NzTabsModule,
     NzTimelineModule,
     NzDropDownModule,
+    NzRadioModule,
   ],
   exports: [
     NzLayoutModule,
@@ -48,6 +50,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     NzTabsModule,
     NzTimelineModule,
     NzDropDownModule,
+    NzRadioModule,
   ],
 })
 export class SharedModule {}

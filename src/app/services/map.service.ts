@@ -13,7 +13,10 @@ export class MapService {
     45.49668500000002,
     -73.57755583068695
   );
-  constructor(private http: HttpClient) {}
+
+  markers: google.maps.Marker[] = [];
+
+  constructor(private http: HttpClient) { }
 
   suggestPlaces(tweets: ITweet[]) {
     this.http
@@ -38,8 +41,6 @@ export class MapService {
 
   addPlaces(places, map = this.map) {
     for (const place of places) {
-      console.log(place);
-
       if (place.geometry && place.geometry.location) {
         const image = {
           url: place.icon,
@@ -55,10 +56,17 @@ export class MapService {
           title: place.name,
           position: place.geometry.location,
         });
-
+        this.markers.push(marker);
         this.attachInfoWindow(marker, place);
       }
     }
+  }
+
+  removeMarkers() {
+    this.markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    this.markers = [];
   }
 
   getPhotoUrl(place: google.maps.places.PlaceResult) {
@@ -66,9 +74,10 @@ export class MapService {
     if (place.photos !== undefined && place.photos.length !== 0) {
       //@ts-ignore
       photoReference = place.photos[0].photo_reference;
+      const placeId = place.place_id
+      return `${this.url}places-images/${placeId}/${photoReference}`;
     }
-    const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photo_reference=${photoReference}&key=AIzaSyCYYEd7y5K5e0kSPk-J39b2jO31qL7es1s`;
-    return photoUrl;
+    return 'assets/map-default.png';
   }
 
   attachInfoWindow(
@@ -80,12 +89,13 @@ export class MapService {
       //@ts-ignore
       photoReference = placeResult.photos[0].photo_reference;
     }
-    const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photo_reference=${photoReference}&key=AIzaSyCYYEd7y5K5e0kSPk-J39b2jO31qL7es1s`;
+    const placeId = placeResult.place_id
+    const photoUrl = `${this.url}places-images/${placeId}/${photoReference}`;
     let content = `<div> <h2>${placeResult.name}</h2>`;
 
     if (photoReference !== null) {
       content =
-        content + `<img src="${photoUrl}" alt="${placeResult.name}"> </div>`;
+        content + `<img src="${photoUrl}" alt="${placeResult.name}" loading="lazy"> </div>`;
     } else {
       content = content + `</div>`;
     }
