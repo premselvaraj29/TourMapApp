@@ -2,9 +2,16 @@
   height: 100vh;
 }
 .logo {
-  height: 32px;
+  height: 100px;
+
   margin: 16px;
   background: rgba(255, 255, 255, 0.3);
+}
+
+.logo img {
+  height:100%;
+  width:100%;
+  object-fit: cover;
 }
 
 nz-header {

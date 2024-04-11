@@ -70,6 +70,8 @@ export class PlacesContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.recommendationsService.onRecommendationsUpdate((data) => {
+      console.log(data);
+      
       this.recommendations = flatten(
         data.filter((x) => x.status === 'OK').map((x) => x.results)
       );

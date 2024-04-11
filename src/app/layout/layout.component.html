@@ -1,6 +1,8 @@
 <nz-layout class="layout">
   <nz-sider nzCollapsible nzWidth="200px">
-    <div class="logo"></div>
+    <div class="logo">
+      <img src="assets/BizTravel_transparent.svg" alt="">
+    </div>
     <ul nz-menu nzMode="inline">
       <li nz-menu-item>
         <span nz-icon nzType="save" nzTheme="outline"></span>
@@ -32,14 +34,14 @@
     <app-twitter-connect></app-twitter-connect>
   </nz-sider>
   <nz-layout>
-    <nz-header class="header"> <h1>Business Trip App</h1></nz-header>
+    <nz-header class="header"> <h1>BizTravel</h1></nz-header>
     <nz-content style="margin: 0px">
       <div class="container">
         <nz-tabset nzCentered>
           <nz-tab nzTitle="Pick your favorite spot">
             <app-places-container class="places"></app-places-container>
           </nz-tab>
-          <nz-tab nzTitle="Schedule your iteniary">
+          <nz-tab nzTitle="Schedule your itinerary">
             <app-itinary-schedule></app-itinary-schedule>
           </nz-tab>
         </nz-tabset>

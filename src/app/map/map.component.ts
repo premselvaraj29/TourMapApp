@@ -12,7 +12,7 @@ export class MapComponent implements OnInit {
   constructor(private mapService: MapService) {}
   ngOnInit(): void {
     const loader = new Loader({
-      apiKey: 'AIzaSyCYYEd7y5K5e0kSPk-J39b2jO31qL7es1s',
+      apiKey: 'AIzaSyCCkpYBmmRu-LhbQAgr5wwqPenACImYDVM',
       version: 'weekly',
     });
     this.mapService.createMap(document.getElementById('map') as HTMLElement);

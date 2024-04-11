@@ -39,13 +39,28 @@
   <nz-form-item nz-row>
     <nz-form-control>
       <button nz-button nzType="primary" (click)="submitForm()">
-        Schedule Itineary
+        Schedule Itinerary
       </button>
     </nz-form-control>
   </nz-form-item>
 </form>
 <nz-timeline class="timeline">
-  <nz-timeline-item nzColor="red" *ngFor="let item of optimizedRoutePlaces">{{
-    item.name
-  }}</nz-timeline-item>
+  <ng-template style="padding: 0px; margin: 0px" #soccerTemplate>
+    <div
+      (click)="clickMe()"
+      style="
+        background-color: #f0f2f5;
+        color: greenyellow;
+        padding: 0px;
+        margin: 0px;
+      "
+    >
+      <span nz-icon nzType="check-circle" nzTheme="outline"></span>
+    </div>
+  </ng-template>
+  <nz-timeline-item nzColor="red" *ngFor="let item of optimizedRoutePlaces">
+    {{ item.name }}
+  </nz-timeline-item>
 </nz-timeline>
+
+<!-- <ng-template   (click)="clickMe()" #soccerTemplate>⚽</ng-template> -->

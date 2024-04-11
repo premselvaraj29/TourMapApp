@@ -22,7 +22,10 @@ export class ItinaryScheduleComponent implements OnInit {
   optimizedRoutePlaces: any[] = [];
   ngOnInit(): void {
     this.placesService.optimizedFavorites$.subscribe((data) => {
-      this.optimizedRoutePlaces = data;
+      this.optimizedRoutePlaces = data.map((i) => ({
+        ...i,
+        name: i.name ? i.name : i.formatted_address,
+      }));
     });
   }
 
@@ -31,5 +34,9 @@ export class ItinaryScheduleComponent implements OnInit {
       this.timeRequirementForm.value.totalTime,
       this.timeRequirementForm.value.timePerLocation
     );
+  }
+
+  clickMe() {
+    console.log('clicked');
   }
 }
