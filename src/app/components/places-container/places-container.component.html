@@ -1,17 +1,36 @@
-<nz-page-header nzTitle="Personalised recommendations"
-  nzSubtitle="Based on your location and preferences"></nz-page-header>
+<nz-page-header
+  nzTitle="Personalised recommendations"
+  nzSubtitle="Based on your location and preferences"
+></nz-page-header>
 
 <div class="places-wrapper">
   <div class="places-toolbar">
     <div class="places-filter">
-      <app-price-filter (valueChanged)="filterChanged($event)"></app-price-filter>
-      <app-rating-filter (valueChanged)="filterChanged($event)"></app-rating-filter>
-      <app-opennow-filter (valueChanged)="filterChanged($event)"></app-opennow-filter>
+      <app-price-filter
+        (valueChanged)="filterChanged($event)"
+      ></app-price-filter>
+      <app-rating-filter
+        (valueChanged)="filterChanged($event)"
+      ></app-rating-filter>
+      <app-opennow-filter
+        (valueChanged)="filterChanged($event)"
+      ></app-opennow-filter>
     </div>
     <div class="places-category">
       <nz-button-group>
-        <ng-template ngFor let-item [ngForOf]="category" let-currentIndex="index">
-          <button nz-button [nzType]="item.selected === true ? 'primary' : 'default'" (click)="updateCategory(currentIndex)">{{item.label}}</button>
+        <ng-template
+          ngFor
+          let-item
+          [ngForOf]="category"
+          let-currentIndex="index"
+        >
+          <button
+            nz-button
+            [nzType]="item.selected === true ? 'primary' : 'default'"
+            (click)="updateCategory(currentIndex)"
+          >
+            {{ item.label }}
+          </button>
         </ng-template>
       </nz-button-group>
     </div>
@@ -19,27 +38,48 @@
 
   <div class="container">
     <!-- Resturants -->
-    <ng-template ngFor let-item [ngForOf]="filteredRecommendations" let-currentIndex="index">
-      <nz-card class="card" style="width: 250px; margin: 10px;" [nzCover]="coverTemplate"
-        [nzActions]="[actionSetting]">
+    <ng-template
+      ngFor
+      let-item
+      [ngForOf]="filteredRecommendations"
+      let-currentIndex="index"
+    >
+      <nz-card
+        class="card"
+        style="width: 250px; margin: 10px"
+        [nzCover]="coverTemplate"
+        [nzActions]="[actionPreview, actionSetting]"
+      >
         <ng-template #coverTemplate>
-          <img alt="{{item.name}}" [width]="250" [height]="150" [src]="getPhotoUrl(item)" [loading]="currentIndex <= 6 ? 'eager' : 'lazy'"/>
+          <img
+            alt="{{ item.name }}"
+            [width]="250"
+            [height]="150"
+            [src]="getPhotoUrl(item)"
+            [loading]="currentIndex <= 6 ? 'eager' : 'lazy'"
+          />
         </ng-template>
         <div class="place-details">
-          <div class="place-title">{{item.name}}</div>
+          <div class="place-title">{{ item.name }}</div>
           <div class="place-rate-price">
-            <span>{{item.rating}}</span>
-            <span><nz-rate style="height: fit-content" [ngModel]="item.rating" nzDisabled
-                class="place-rate"></nz-rate></span>
-            <span>({{item.user_ratings_total | number}})</span>
+            <span>{{ item.rating }}</span>
+            <span
+              ><nz-rate
+                style="height: fit-content"
+                [ngModel]="item.rating"
+                nzDisabled
+                class="place-rate"
+              ></nz-rate
+            ></span>
+            <span>({{ item.user_ratings_total | number }})</span>
             <ng-template [ngIf]="getPrice(item)" [ngIfElse]="empty">
               <span>·</span>
-              <span>{{getPrice(item)}}</span>
+              <span>{{ getPrice(item) }}</span>
             </ng-template>
             <ng-template #empty></ng-template>
           </div>
           <div class="place-address-hour">
-            <span>{{getAddress(item)}}</span>
+            <span>{{ getAddress(item) }}</span>
             <span>·</span>
             <ng-template [ngIf]="isOpenNow(item)" [ngIfElse]="closed">
               <span class="place-open">Open</span>
@@ -49,17 +89,32 @@
             </ng-template>
           </div>
         </div>
+
+        <ng-template #actionPreview>
+          <span
+            nz-icon
+            nzType="eye"
+            nzTheme="twotone"
+            style="font-size: 30px"
+            (click)="showLocationMarker(item)"
+          ></span>
+        </ng-template>
+
         <ng-template #actionSetting>
-          <span nz-icon [style.color]="getIconColor(item)" (click)="toggleFavorite(item)">
+          <span
+            nz-icon
+            [style.color]="getIconColor(item)"
+            (click)="toggleFavorite(item)"
+          >
             <svg width="30" height="30">
               <path
-                d="M923 283.6c-13.4-31.1-32.6-58.9-56.9-82.8-24.3-23.8-52.5-42.4-84-55.5-32.5-13.5-66.9-20.3-102.4-20.3-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5-24.4 23.9-43.5 51.7-56.9 82.8-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3 0.1-35.3-7-69.6-20.9-101.9z" />
+                d="M923 283.6c-13.4-31.1-32.6-58.9-56.9-82.8-24.3-23.8-52.5-42.4-84-55.5-32.5-13.5-66.9-20.3-102.4-20.3-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5-24.4 23.9-43.5 51.7-56.9 82.8-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3 0.1-35.3-7-69.6-20.9-101.9z"
+              />
             </svg>
           </span>
         </ng-template>
       </nz-card>
     </ng-template>
-
   </div>
 </div>
 

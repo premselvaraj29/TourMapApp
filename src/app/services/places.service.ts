@@ -16,6 +16,7 @@ export class PlacesService {
   currentLocationLatLng: google.maps.LatLngLiteral = { lat: 0, lng: 0 };
   readonly apiKey = 'AIzaSyCCkpYBmmRu-LhbQAgr5wwqPenACImYDVM';
   currentLocation$ = new Subject<google.maps.places.PlaceResult>();
+  placeContainerTabSelection$ = new Subject<boolean>();
 
   constructor(private http: HttpClient, private mapService: MapService) {}
 
@@ -68,6 +69,8 @@ export class PlacesService {
           )
           .subscribe((data) => {
             const optimalRoutes = data['optimal_combined_tour'];
+            console.log(optimalRoutes);
+
             const optimizedFavorites = optimalRoutes.map(
               (index) => favorites[index]
             );
