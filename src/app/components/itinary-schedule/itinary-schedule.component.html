@@ -5,18 +5,24 @@
   (ngSubmit)="submitForm()"
 >
   <nz-form-item>
-    <nz-form-label nzRequired nzFor="totalTime"
-      >Total Time in mins</nz-form-label
-    >
-    <nz-form-control nzErrorTip="Please input your total time in mins!">
-      <nz-input-group nzPrefixIcon="field-time">
-        <input
-          type="number"
-          nz-input
-          formControlName="totalTime"
-          placeholder="Total Time"
-        />
-      </nz-input-group>
+    <nz-form-label nzRequired nzFor="startTime">Start Time</nz-form-label>
+    <nz-form-control nzErrorTip="Please input your start time">
+      <nz-time-picker
+        formControlName="startTime"
+        nzFormat="h:mm a"
+        [nzUse12Hours]="true"
+      ></nz-time-picker>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="endTime">End Time</nz-form-label>
+    <nz-form-control nzErrorTip="Please input your end time">
+      <nz-time-picker
+        formControlName="endTime"
+        nzFormat="h:mm a"
+        [nzUse12Hours]="true"
+      ></nz-time-picker>
     </nz-form-control>
   </nz-form-item>
 
@@ -44,23 +50,16 @@
     </nz-form-control>
   </nz-form-item>
 </form>
-<nz-timeline class="timeline">
-  <ng-template style="padding: 0px; margin: 0px" #soccerTemplate>
-    <div
-      (click)="clickMe()"
-      style="
-        background-color: #f0f2f5;
-        color: greenyellow;
-        padding: 0px;
-        margin: 0px;
-      "
-    >
-      <span nz-icon nzType="check-circle" nzTheme="outline"></span>
-    </div>
-  </ng-template>
-  <nz-timeline-item nzColor="red" *ngFor="let item of optimizedRoutePlaces">
+<nz-timeline nzMode="left" class="timeline">
+  <nz-timeline-item
+    nzColor="red"
+    *ngFor="let item of optimizedRoutePlaces"
+    [nzLabel]="item.time"
+  >
     {{ item.name }}
   </nz-timeline-item>
 </nz-timeline>
-
+<ng-template #timeTemplate let-time="time">
+  {{ time | date : "h:mm a" }}
+</ng-template>
 <!-- <ng-template   (click)="clickMe()" #soccerTemplate>⚽</ng-template> -->

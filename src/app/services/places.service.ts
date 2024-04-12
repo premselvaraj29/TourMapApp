@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject, filter, switchMap, take } from 'rxjs';
+import { BehaviorSubject, Subject, filter, switchMap, take, tap } from 'rxjs';
 import { MapService } from './map.service';
 
 @Injectable({
@@ -17,6 +17,8 @@ export class PlacesService {
   readonly apiKey = 'AIzaSyCCkpYBmmRu-LhbQAgr5wwqPenACImYDVM';
   currentLocation$ = new Subject<google.maps.places.PlaceResult>();
   placeContainerTabSelection$ = new Subject<boolean>();
+  time_matrix = [];
+  optimalRoutes = [];
 
   constructor(private http: HttpClient, private mapService: MapService) {}
 
@@ -58,6 +60,10 @@ export class PlacesService {
         this.http
           .post(this.url + 'distance-matrix', { data: origins })
           .pipe(
+            tap((res) => {
+              this.time_matrix = res['time_matrix'];
+              console.log(this.time_matrix);
+            }),
             switchMap((res) => {
               const data = { ...res, total_time_required, time_to_spend };
               return this.http.post(
@@ -69,7 +75,7 @@ export class PlacesService {
           )
           .subscribe((data) => {
             const optimalRoutes = data['optimal_combined_tour'];
-            console.log(optimalRoutes);
+            this.optimalRoutes = optimalRoutes;
 
             const optimizedFavorites = optimalRoutes.map(
               (index) => favorites[index]

@@ -13,3 +13,8 @@ form {
   justify-self: center;
   margin-top: 20px;
 }
+
+
+.time-container{
+  display:flex;
+}

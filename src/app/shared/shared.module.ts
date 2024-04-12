@@ -15,6 +15,13 @@ import { NzRateModule } from 'ng-zorro-antd/rate';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+registerLocaleData(en);
+
 @NgModule({
   declarations: [],
   imports: [
@@ -34,6 +41,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
     NzTimelineModule,
     NzDropDownModule,
     NzRadioModule,
+    NzTimePickerModule,
   ],
   exports: [
     NzLayoutModule,
@@ -51,6 +59,8 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
     NzTimelineModule,
     NzDropDownModule,
     NzRadioModule,
+    NzTimePickerModule,
   ],
+  providers: [],
 })
 export class SharedModule {}

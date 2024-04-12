@@ -20,6 +20,10 @@ import { PriceFilterComponent } from './components/price-filter/price-filter.com
 import { OpennowFilterComponent } from './components/opennow-filter/opennow-filter.component';
 import { RatingFilterComponent } from './components/rating-filter/rating-filter.component';
 
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+registerLocaleData(en);
+
 @NgModule({
   declarations: [
     AppComponent,
